@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 //import frc.robot.subsystems.Drive;
+import frc.robot.RobotMap;
 
 public class ManualDriveCommand extends Command {
   public ManualDriveCommand() {
@@ -29,9 +30,18 @@ public class ManualDriveCommand extends Command {
     double joystickY;
     joystickX = Robot.oi.driverStick.getX();
     joystickY = Robot.oi.driverStick.getY();
+    joystickX = handleDeadband(joystickX, RobotMap.joystickDeadBand);
+    joystickY = handleDeadband(joystickY, RobotMap.joystickDeadBand);
+    if (Robot.oi.turboButton.get()){
+    }
+    else{
+      joystickX = joystickX * RobotMap.nonTurboMultiplierTurn; 
+      joystickY = joystickY * RobotMap.nonTurboMultiplierForward; 
+    }
     System.out.println("X=" + joystickX + "Y =" + joystickY);
     Robot.drive.setArcade(joystickX, joystickY);
-    
+
+
   }
   public double handleDeadband(double val, double deadband){
     return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
