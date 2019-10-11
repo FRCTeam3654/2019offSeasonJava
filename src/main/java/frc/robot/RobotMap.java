@@ -35,4 +35,18 @@ public static int leftTalonMaster = 1;
 public static int rightTalonMaster = 2;
 public static int leftTalonSlave = 3;
 public static int rightTalonSlave = 4;
+
+public static double joystickDeadBand = 0.05;
+
+public static double leftOverRightCompensation = .98;
+
+public static double talonDriveAccelerationRate = 0.3654;
+
+public static double nonTurboMultiplierTurn = 0.5;
+public static double nonTurboMultiplierForward = 0.5; 
+
+
+
+public static int turboButtonNumber = 1; 
+
 }
