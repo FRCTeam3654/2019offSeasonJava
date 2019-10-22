@@ -56,7 +56,7 @@ public class Drive extends Subsystem {
     rightFrontTalon.setSensorPhase(false);
     leftFrontTalon.setSensorPhase(false);
   
-    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
+//    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
   }
   public void setPower(double leftPower, double rightPower){
     leftFrontTalon.set(ControlMode.PercentOutput, leftPower);
@@ -65,7 +65,7 @@ public class Drive extends Subsystem {
  
      }
 public void setArcade(double velocity, double turn){
-  differentialDrive.arcadeDrive(velocity, turn);
+ // differentialDrive.arcadeDrive(velocity, turn);
 }
 
   
