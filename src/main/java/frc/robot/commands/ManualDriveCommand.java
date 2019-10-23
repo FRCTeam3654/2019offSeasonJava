@@ -37,39 +37,29 @@ public class ManualDriveCommand extends Command {
     double joystickY;
     joystickX = Robot.oi.driverStick.getX();
     joystickY = Robot.oi.driverStick.getY();
-    joystickX = Robot.mathFunctions.handleDeadband(joystickX, RobotMap.joystickDeadBand);
-    joystickY = Robot.mathFunctions.handleDeadband(joystickY, RobotMap.joystickDeadBand);
+    joystickX = handleDeadband(joystickX, RobotMap.joystickDeadBand);
+    joystickY = handleDeadband(joystickY, RobotMap.joystickDeadBand);
     if (Robot.oi.turboButton.get()){
     }
     else{
       joystickX = joystickX * RobotMap.nonTurboMultiplierTurn; 
       joystickY = joystickY * RobotMap.nonTurboMultiplierForward; 
     }
+    System.out.println("X=" + joystickX + "Y =" + joystickY);
+    Robot.drive.setArcade(joystickX, joystickY);
 
-<<<<<<< HEAD
-    //Robot.drive.setArcade(joystickX, joystickY);
-    Robot.mathFunctions.mercyArcadeDrive(joystickX, joystickY);
-   
-    SmartDashboard.putNumber("Left Speed",Robot.mathFunctions.LeftSet);
-    SmartDashboard.putNumber("Right Speed",Robot.mathFunctions.RightSet);
-    SmartDashboard.putNumber("Left Encoder", Robot.drive.leftFrontTalon.getSelectedSensorVelocity());
-    SmartDashboard.putNumber("Right Encoder", Robot.drive.rightFrontTalon.getSelectedSensorVelocity());    
-
-    System.out.println("X=" + joystickX + "Y =" + joystickY + "L=" + Robot.mathFunctions.LeftSet + "R =" + Robot.mathFunctions.RightSet);
-    Robot.drive.setPower(Robot.mathFunctions.LeftSet, Robot.mathFunctions.RightSet);
-=======
     //Dashboard features for Joystick x and y values and right and left encoders
     SmartDashboard.putNumber("Joystick X", joystickX);
     SmartDashboard.putNumber("Joystick Y", joystickY);
     SmartDashboard.putNumber("Left Encoder", Robot.drive.leftFrontTalon.getSelectedSensorVelocity());
     SmartDashboard.putNumber("Right Encoder", Robot.drive.rightFrontTalon.getSelectedSensorVelocity());
-<<<<<<< HEAD
-=======
->>>>>>> ccc8ccacd2c5a2fb79cf32d529fb01c159b14d8c
-
->>>>>>> 7406ac5aae1aa85d2cf3978c9e99e7629363c62c
   }
 
+
+  public double handleDeadband(double val, double deadband){
+    return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
+  }
+  
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
