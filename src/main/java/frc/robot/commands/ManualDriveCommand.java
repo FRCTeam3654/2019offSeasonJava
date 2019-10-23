@@ -53,6 +53,10 @@ public class ManualDriveCommand extends Command {
     SmartDashboard.putNumber("Joystick Y", joystickY);
     SmartDashboard.putNumber("Left Encoder", Robot.drive.leftFrontTalon.getSelectedSensorVelocity());
     SmartDashboard.putNumber("Right Encoder", Robot.drive.rightFrontTalon.getSelectedSensorVelocity());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7406ac5aae1aa85d2cf3978c9e99e7629363c62c
   }
   public double handleDeadband(double val, double deadband){
     return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
