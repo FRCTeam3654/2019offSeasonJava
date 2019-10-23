@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 //import frc.robot.subsystems.Drive;
@@ -47,7 +48,11 @@ public class ManualDriveCommand extends Command {
     System.out.println("X=" + joystickX + "Y =" + joystickY);
     Robot.drive.setArcade(joystickX, joystickY);
 
-
+    //Dashboard features for Joystick x and y values and right and left encoders
+    SmartDashboard.putNumber("Joystick X", joystickX);
+    SmartDashboard.putNumber("Joystick Y", joystickY);
+    SmartDashboard.putNumber("Left Encoder", Robot.drive.leftFrontTalon.getSelectedSensorVelocity());
+    SmartDashboard.putNumber("Right Encoder", Robot.drive.rightFrontTalon.getSelectedSensorVelocity());
   }
   public double handleDeadband(double val, double deadband){
     return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
