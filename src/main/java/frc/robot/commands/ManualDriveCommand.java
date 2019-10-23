@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
@@ -24,7 +25,7 @@ public class ManualDriveCommand extends Command {
   }
 
 //this is melanie making changes to your code, mwahahahha
-// ANdy is awesome
+// ANdy is awesome yes he is
 //Karena 
 //test
 // test change
@@ -45,6 +46,7 @@ public class ManualDriveCommand extends Command {
       joystickY = joystickY * RobotMap.nonTurboMultiplierForward; 
     }
 
+<<<<<<< HEAD
     //Robot.drive.setArcade(joystickX, joystickY);
     Robot.mathFunctions.mercyArcadeDrive(joystickX, joystickY);
    
@@ -55,7 +57,17 @@ public class ManualDriveCommand extends Command {
 
     System.out.println("X=" + joystickX + "Y =" + joystickY + "L=" + Robot.mathFunctions.LeftSet + "R =" + Robot.mathFunctions.RightSet);
     Robot.drive.setPower(Robot.mathFunctions.LeftSet, Robot.mathFunctions.RightSet);
+=======
+    //Dashboard features for Joystick x and y values and right and left encoders
+    SmartDashboard.putNumber("Joystick X", joystickX);
+    SmartDashboard.putNumber("Joystick Y", joystickY);
+    SmartDashboard.putNumber("Left Encoder", Robot.drive.leftFrontTalon.getSelectedSensorVelocity());
+    SmartDashboard.putNumber("Right Encoder", Robot.drive.rightFrontTalon.getSelectedSensorVelocity());
+<<<<<<< HEAD
+=======
+>>>>>>> ccc8ccacd2c5a2fb79cf32d529fb01c159b14d8c
 
+>>>>>>> 7406ac5aae1aa85d2cf3978c9e99e7629363c62c
   }
 
   // Make this return true when this Command no longer needs to run execute()
