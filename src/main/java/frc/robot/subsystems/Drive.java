@@ -67,6 +67,7 @@ public class Drive extends Subsystem {
  
      }
 public void setArcade(double velocity, double turn){
+  mercyArcadeDrive(velocity, turn);
  // differentialDrive.arcadeDrive(velocity, turn);
 }
 //Mercy Arcade Drive allows us to smoothly control the robot
@@ -90,6 +91,8 @@ if (rightSpeed < -1) {
 if (leftSpeed < -1) {
   leftSpeed = -1;
 }
+leftFrontTalon.set(ControlMode.PercentOutput, leftSpeed);
+   rightFrontTalon.set(ControlMode.PercentOutput, rightSpeed);
   
   /*Convert the initial (x,y) coordinates to polar coordinates.
   Rotate them by 45 degrees.
