@@ -34,7 +34,7 @@ public class ManualDriveCommand extends Command {
   protected void execute() {
     double joystickX;
     double joystickY;
-    joystickX = Robot.oi.driverStick.getX();
+    joystickX = (Robot.oi.driverStick.getX() * -1);
     joystickY = (Robot.oi.driverStick.getY() * -1);
     joystickX = handleDeadband(joystickX, RobotMap.joystickDeadBand);
     joystickY = handleDeadband(joystickY, RobotMap.joystickDeadBand);
