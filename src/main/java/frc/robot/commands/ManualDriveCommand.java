@@ -9,8 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-//import frc.robot.subsystems.Drive;
 import frc.robot.RobotMap;
 
 public class ManualDriveCommand extends Command {
@@ -61,6 +61,7 @@ public class ManualDriveCommand extends Command {
   public double handleDeadband(double val, double deadband){
     return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
   }
+  
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

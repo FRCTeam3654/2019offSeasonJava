@@ -58,7 +58,7 @@ public class Drive extends Subsystem {
     rightFrontTalon.setSensorPhase(false);
     leftFrontTalon.setSensorPhase(false);
   
-    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
+//    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
   }
   public void setPower(double leftPower, double rightPower){
     leftFrontTalon.set(ControlMode.PercentOutput, leftPower);
@@ -67,8 +67,9 @@ public class Drive extends Subsystem {
  
      }
 public void setArcade(double velocity, double turn){
-  differentialDrive.arcadeDrive(velocity, turn);
+ // differentialDrive.arcadeDrive(velocity, turn);
 }
+//Mercy Arcade Drive allows us to smoothly control the robot
 public void mercyArcadeDrive(double joystickX, double joystickY){
 double radiusPower = Math.hypot(joystickX, joystickY);
 double initAngle = Math.atan2(joystickX, joystickY);
@@ -89,9 +90,6 @@ if (rightSpeed < -1) {
 if (leftSpeed < -1) {
   leftSpeed = -1;
 }
-
-
-  
   
   /*Convert the initial (x,y) coordinates to polar coordinates.
   Rotate them by 45 degrees.
@@ -100,9 +98,6 @@ Rescale the new coordinates to -1.0/+1.0.
 Clamp the new values to -1.0/+1.0.
 This assumes the initial (x,y) coordinates are in the -1.0/+1.0 range. The side of the inner square will always be 
 equal to l * sqrt(2)/2, so step 4 is just about multiplying the values by sqrt(2). */
-
-
-  
 
 }
 }
