@@ -17,6 +17,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.InvertType; 
 import com.ctre.phoenix.motorcontrol.ControlMode; 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 /**
  * Add your docs here.
  */
@@ -57,6 +58,11 @@ public class Drive extends Subsystem {
 
     rightFrontTalon.setSensorPhase(false);
     leftFrontTalon.setSensorPhase(false);
+
+    rightFrontTalon.setNeutralMode(NeutralMode.Brake);
+    leftFrontTalon.setNeutralMode(NeutralMode.Brake);
+    rightBackTalon.setNeutralMode(NeutralMode.Brake);
+    leftBackTalon.setNeutralMode(NeutralMode.Brake);
   
 //    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
   }
