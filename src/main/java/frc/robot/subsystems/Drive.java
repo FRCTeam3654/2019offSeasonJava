@@ -25,6 +25,8 @@ public class Drive extends Subsystem {
   // here. Call these from Commands. heehee
 
   public DifferentialDrive differentialDrive;
+  public double leftSpeed; 
+  public double rightSpeed;
 
   public WPI_TalonSRX leftFrontTalon = new WPI_TalonSRX(RobotMap.leftTalonMaster);
   public WPI_TalonSRX leftBackTalon = new WPI_TalonSRX(RobotMap.leftTalonSlave);
@@ -67,9 +69,37 @@ public class Drive extends Subsystem {
 public void setArcade(double velocity, double turn){
  // differentialDrive.arcadeDrive(velocity, turn);
 }
-
+//Mercy Arcade Drive allows us to smoothly control the robot
+public void mercyArcadeDrive(double joystickX, double joystickY){
+double radiusPower = Math.hypot(joystickX, joystickY);
+double initAngle = Math.atan2(joystickX, joystickY);
+initAngle = initAngle + Math.PI/4;
+rightSpeed = radiusPower*Math.sin(initAngle);
+leftSpeed = radiusPower*Math.cos(initAngle);
+rightSpeed = rightSpeed*1.414;
+leftSpeed = leftSpeed*1.414;
+if (rightSpeed > 1) {
+  rightSpeed = 1;
+}
+if (leftSpeed > 1) {
+  leftSpeed = 1;
+}
+if (rightSpeed < -1) {
+  rightSpeed = 1;
+}
+if (leftSpeed < -1) {
+  leftSpeed = -1;
+}
   
+  /*Convert the initial (x,y) coordinates to polar coordinates.
+  Rotate them by 45 degrees.
+Convert the polar coordinates back to cartesian.
+Rescale the new coordinates to -1.0/+1.0.
+Clamp the new values to -1.0/+1.0.
+This assumes the initial (x,y) coordinates are in the -1.0/+1.0 range. The side of the inner square will always be 
+equal to l * sqrt(2)/2, so step 4 is just about multiplying the values by sqrt(2). */
 
+}
 }
 // yeet :)
 // you could lowkey highkey write a whole butterly essay in java code
@@ -77,3 +107,4 @@ public void setArcade(double velocity, double turn){
 //we created teh drive class but we still have to create the instance of that
 //have to create a command class that links x and y output to the talon
 //go off ig
+//go off Mr. Kasznay 

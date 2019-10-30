@@ -38,13 +38,14 @@ public class ManualDriveCommand extends Command {
     joystickY = Robot.oi.driverStick.getY();
     joystickX = handleDeadband(joystickX, RobotMap.joystickDeadBand);
     joystickY = handleDeadband(joystickY, RobotMap.joystickDeadBand);
+    //This is to activate turbo mode. If the button is pressed, turbo mode is on
     if (Robot.oi.turboButton.get()){
     }
     else{
       joystickX = joystickX * RobotMap.nonTurboMultiplierTurn; 
-      joystickY = joystickY * RobotMap.nonTurboMultiplierForward; 
+      joystickY = joystickY * RobotMap.nonTurboMultiplierForward;
     }
-    System.out.println("X=" + joystickX + "Y =" + joystickY);
+    System.out.println("X=" + joystickX + "Y=" + joystickY);
     Robot.drive.setArcade(joystickX, joystickY);
 
     //Dashboard features for Joystick x and y values and right and left encoders
@@ -55,6 +56,7 @@ public class ManualDriveCommand extends Command {
   }
 
 
+  //Deadband makes the center of the joystick have leeway on absolute 0
   public double handleDeadband(double val, double deadband){
     return (Math.abs(val) > Math.abs(deadband)) ? val : 0.0;
   }
