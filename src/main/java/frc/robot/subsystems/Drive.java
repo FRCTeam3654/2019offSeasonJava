@@ -18,6 +18,8 @@ import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.ControlMode; 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.sensors.PigeonIMU;
+
 /**
  * Add your docs here.
  */
@@ -34,6 +36,8 @@ public class Drive extends Subsystem {
   public WPI_TalonSRX rightFrontTalon = new WPI_TalonSRX(RobotMap.rightTalonMaster);
   public WPI_TalonSRX rightBackTalon = new WPI_TalonSRX(RobotMap.rightTalonSlave);
 
+  public PigeonIMU pigeonVinnie = new PigeonIMU(leftBackTalon);
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -47,6 +51,10 @@ public class Drive extends Subsystem {
     leftBackTalon.configFactoryDefault();
     rightFrontTalon.configFactoryDefault();
     rightBackTalon.configFactoryDefault();
+    pigeonVinnie.configFactoryDefault();
+    pigeonVinnie.setYaw(0.0);
+    pigeonVinnie.setFusedHeading(0.0);
+    
     
     leftBackTalon.follow(leftFrontTalon);
     rightBackTalon.follow(rightFrontTalon);
@@ -63,6 +71,8 @@ public class Drive extends Subsystem {
     leftFrontTalon.setNeutralMode(NeutralMode.Brake);
     rightBackTalon.setNeutralMode(NeutralMode.Brake);
     leftBackTalon.setNeutralMode(NeutralMode.Brake);
+
+
   
 //    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
   }

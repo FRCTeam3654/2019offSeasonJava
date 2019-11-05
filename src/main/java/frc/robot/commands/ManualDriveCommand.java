@@ -34,6 +34,8 @@ public class ManualDriveCommand extends Command {
   protected void execute() {
     double joystickX;
     double joystickY;
+    double [] yawPitchRollArray;
+    yawPitchRollArray = new double [3];
     joystickX = (Robot.oi.driverStick.getX() * -1);
     joystickY = (Robot.oi.driverStick.getY() * -1);
     joystickX = handleDeadband(joystickX, RobotMap.joystickDeadBand);
@@ -47,12 +49,14 @@ public class ManualDriveCommand extends Command {
     }
     System.out.println("X=" + joystickX + "Y=" + joystickY);
     Robot.drive.setArcade(joystickX, joystickY);
+    Robot.drive.pigeonVinnie.getYawPitchRoll(yawPitchRollArray);
 
     //Dashboard features for Joystick x and y values and right and left encoders
-    SmartDashboard.putNumber("Joystick X", joystickX);
-    SmartDashboard.putNumber("Joystick Y", joystickY);
+    SmartDashboard.putNumber("Joystick X: ", joystickX);
+    SmartDashboard.putNumber("Joystick Y: ", joystickY);
     SmartDashboard.putNumber("Left Encoder", Robot.drive.leftFrontTalon.getSelectedSensorVelocity());
     SmartDashboard.putNumber("Right Encoder", Robot.drive.rightFrontTalon.getSelectedSensorVelocity());
+    SmartDashboard.putNumber("Yaw: ", yawPitchRollArray[0]);
   }
 
 
