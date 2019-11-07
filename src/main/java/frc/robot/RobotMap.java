@@ -19,7 +19,6 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
   // test
-
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
@@ -44,6 +43,15 @@ public static double talonDriveAccelerationRate = 0.3654;
 
 public static double nonTurboMultiplierTurn = 0.5;
 public static double nonTurboMultiplierForward = 0.5; 
+
+/*these are the pid gains responsiveness to the control loop
+*kF: 1023 represents toutput value to Talon at 100%, 7200 represents velocity units at 100% output
+*
+*                                                           kP,  kI,  kD,    kF,  Iz,  PeakOutput*/
+public final static Gains driveGainsVelocity = new Gains( 0.25, 0.0, 0.0, 1.015, 400, 1);
+public static int pidLoopTimeout = 30;
+
+
 
 
 

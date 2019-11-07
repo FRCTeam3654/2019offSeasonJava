@@ -19,6 +19,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.sensors.PigeonIMU;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+
 
 /**
  * Add your docs here.
@@ -71,6 +73,10 @@ public class Drive extends Subsystem {
     leftFrontTalon.setNeutralMode(NeutralMode.Brake);
     rightBackTalon.setNeutralMode(NeutralMode.Brake);
     leftBackTalon.setNeutralMode(NeutralMode.Brake);
+    rightFrontTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0.0, RobotMap.pidLoopTimeout);
+    leftFrontTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0.0, RobotMap.pidLoopTimeout);
+
+
 
 
   
