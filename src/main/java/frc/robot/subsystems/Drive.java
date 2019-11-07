@@ -14,6 +14,12 @@ import frc.robot.RobotMap;
 import frc.robot.commands.ManualDriveCommand;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+
+
+
 import com.ctre.phoenix.motorcontrol.InvertType; 
 import com.ctre.phoenix.motorcontrol.ControlMode; 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -33,10 +39,10 @@ public class Drive extends Subsystem {
   public double leftSpeed; 
   public double rightSpeed;
 
-  public WPI_TalonSRX leftFrontTalon = new WPI_TalonSRX(RobotMap.leftTalonMaster);
-  public WPI_TalonSRX leftBackTalon = new WPI_TalonSRX(RobotMap.leftTalonSlave);
-  public WPI_TalonSRX rightFrontTalon = new WPI_TalonSRX(RobotMap.rightTalonMaster);
-  public WPI_TalonSRX rightBackTalon = new WPI_TalonSRX(RobotMap.rightTalonSlave);
+  public TalonSRX leftFrontTalon = new TalonSRX(RobotMap.leftTalonMaster);
+  public TalonSRX leftBackTalon = new TalonSRX(RobotMap.leftTalonSlave);
+  public TalonSRX rightFrontTalon = new TalonSRX(RobotMap.rightTalonMaster);
+  public TalonSRX rightBackTalon = new TalonSRX(RobotMap.rightTalonSlave);
 
   public PigeonIMU pigeonVinnie = new PigeonIMU(leftBackTalon);
 
@@ -68,18 +74,30 @@ public class Drive extends Subsystem {
 
     rightFrontTalon.setSensorPhase(false);
     leftFrontTalon.setSensorPhase(false);
+    rightBackTalon.setSensorPhase(false);
+    leftBackTalon.setSensorPhase(false);
 
     rightFrontTalon.setNeutralMode(NeutralMode.Brake);
     leftFrontTalon.setNeutralMode(NeutralMode.Brake);
     rightBackTalon.setNeutralMode(NeutralMode.Brake);
     leftBackTalon.setNeutralMode(NeutralMode.Brake);
-    rightFrontTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0.0, RobotMap.pidLoopTimeout);
-    leftFrontTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0.0, RobotMap.pidLoopTimeout);
+    rightFrontTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, RobotMap.pidLoopTimeout);
+    leftFrontTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, RobotMap.pidLoopTimeout);
 
-
-
+    leftFrontTalon.config_kF(0,RobotMap.driveGainsVelocity.kF);
+    leftFrontTalon.config_kP(0,RobotMap.driveGainsVelocity.kP);
+    leftFrontTalon.config_kI(0,RobotMap.driveGainsVelocity.kI);
+    leftFrontTalon.config_kD(0,RobotMap.driveGainsVelocity.kD);
 
   
+    rightFrontTalon.config_kF(0,RobotMap.driveGainsVelocity.kF);
+    rightFrontTalon.config_kP(0,RobotMap.driveGainsVelocity.kP);
+    rightFrontTalon.config_kI(0,RobotMap.driveGainsVelocity.kI);
+    rightFrontTalon.config_kD(0,RobotMap.driveGainsVelocity.kD);
+
+    zeroSensors();
+
+		
 //    differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
   }
   public void setPower(double leftPower, double rightPower){
@@ -88,6 +106,16 @@ public class Drive extends Subsystem {
 
  
      }
+
+
+
+         /** Zero Quadrature Encoders on Talons */
+		void zeroSensors() {
+			leftFrontTalon.getSensorCollection().setQuadraturePosition(0, RobotMap.pidLoopTimeout);
+			rightFrontTalon.getSensorCollection().setQuadraturePosition(0, RobotMap.pidLoopTimeout);
+			System.out.println("[Quadrature Encoders] All sensors are zeroed.\n");
+		}
+		
 public void setArcade(double velocity, double turn){
   mercyArcadeDrive(velocity, turn);
  // differentialDrive.arcadeDrive(velocity, turn);
@@ -113,8 +141,19 @@ if (rightSpeed < -1) {
 if (leftSpeed < -1) {
   leftSpeed = -1;
 }
-leftFrontTalon.set(ControlMode.PercentOutput, leftSpeed);
-   rightFrontTalon.set(ControlMode.PercentOutput, rightSpeed);
+
+
+
+			double targetVelocity_UnitsPer100ms_left = leftSpeed * 1000;
+			double targetVelocity_UnitsPer100ms_right = rightSpeed * 1000;
+
+		
+			leftFrontTalon.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms_left);
+			rightFrontTalon.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms_right);
+			
+
+//leftFrontTalon.set(ControlMode.PercentOutput, leftSpeed);
+   //rightFrontTalon.set(ControlMode.PercentOutput, rightSpeed);
   
   /*Convert the initial (x,y) coordinates to polar coordinates.
   Rotate them by 45 degrees.
