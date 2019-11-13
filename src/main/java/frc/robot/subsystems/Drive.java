@@ -144,16 +144,26 @@ if (leftSpeed < -1) {
 
 
 
-			double targetVelocity_UnitsPer100ms_left = leftSpeed * 1000;
-			double targetVelocity_UnitsPer100ms_right = rightSpeed * 1000;
-
-		
-			leftFrontTalon.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms_left);
-			rightFrontTalon.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms_right);
 			
 
-//leftFrontTalon.set(ControlMode.PercentOutput, leftSpeed);
-   //rightFrontTalon.set(ControlMode.PercentOutput, rightSpeed);
+      if (RobotMap.driveClosedLoopMode ) {
+        //closed loop
+        double targetVelocity_UnitsPer100ms_left = leftSpeed * 1000;
+        double targetVelocity_UnitsPer100ms_right = rightSpeed * 1000;
+        leftFrontTalon.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms_left);
+      rightFrontTalon.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms_right);
+      }
+      
+		else {
+      //open loop
+      leftFrontTalon.set(ControlMode.PercentOutput, leftSpeed);
+      rightFrontTalon.set(ControlMode.PercentOutput, rightSpeed);
+    }
+			
+      
+			
+
+
   
   /*Convert the initial (x,y) coordinates to polar coordinates.
   Rotate them by 45 degrees.

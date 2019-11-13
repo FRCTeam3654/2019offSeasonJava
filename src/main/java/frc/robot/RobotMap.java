@@ -52,7 +52,7 @@ public final static Gains driveGainsVelocity = new Gains( 0.25, 0.0, 0.0, 1.015,
 public static int pidLoopTimeout = 30;
 
 
-
+public static boolean driveClosedLoopMode = true;
 
 
 public static int turboButtonNumber = 1; 
