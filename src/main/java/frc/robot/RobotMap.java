@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-
+import edu.wpi.first.wpilibj.Preferences;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -23,8 +23,11 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-
+  //:) 
   // Experimentally derived output value (percent output)
+
+static Preferences prefs; 
+
 public static double leftPercentOutput = 1.0;
 public static double rightPercentOutput = 1.0;
 
@@ -56,5 +59,11 @@ public static boolean driveClosedLoopMode = true;
 
 
 public static int turboButtonNumber = 1; 
+public static int driveStraightButtonNumber = 2;
+
+public static void getPreference(){
+prefs = Preferences.getInstance();
+driveClosedLoopMode = prefs.getBoolean("DriveClosedLoopMode", true);
+}
 
 }

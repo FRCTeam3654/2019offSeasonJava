@@ -21,7 +21,7 @@ public class OI {
   // number it is.
   public Joystick driverStick = new Joystick(RobotMap.driverJoystickPort);
   public JoystickButton turboButton = new JoystickButton(driverStick, RobotMap.turboButtonNumber);
-
+  public JoystickButton driveStraightButton = new JoystickButton(driverStick, RobotMap.driveStraightButtonNumber);
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.

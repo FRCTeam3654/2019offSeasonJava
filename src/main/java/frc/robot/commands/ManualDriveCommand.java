@@ -48,9 +48,14 @@ public class ManualDriveCommand extends Command {
       joystickX = joystickX * RobotMap.nonTurboMultiplierTurn; 
       joystickY = joystickY * RobotMap.nonTurboMultiplierForward;
     }
+    Robot.drive.pigeonVinnie.getYawPitchRoll(yawPitchRollArray);
+    if (Robot.oi.driveStraightButton.get()){
+      joystickX = 0;
+    }
+
     System.out.println("X=" + joystickX + "Y=" + joystickY);
     Robot.drive.setArcade(joystickX, joystickY);
-    Robot.drive.pigeonVinnie.getYawPitchRoll(yawPitchRollArray);
+    
 
     //Dashboard features for Joystick x and y values and right and left encoders
     SmartDashboard.putNumber("Joystick X: ", joystickX);
