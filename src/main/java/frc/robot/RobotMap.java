@@ -40,6 +40,9 @@ public static int rightTalonSlave = 4;
 
 public static double joystickDeadBand = 0.05;
 
+//Must be experimentally derived
+public static double driveStraightProportion = 0.2;
+
 public static double leftOverRightCompensation = .98;
 
 public static double talonDriveAccelerationRate = 0.3654;

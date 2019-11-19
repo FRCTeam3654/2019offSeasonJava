@@ -13,6 +13,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ManualDriveCommand extends Command {
+  private boolean driveStraightFlag = false;
+  private double driveStraightAngle = 0;
   public ManualDriveCommand() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drive);
@@ -50,8 +52,19 @@ public class ManualDriveCommand extends Command {
     }
     Robot.drive.pigeonVinnie.getYawPitchRoll(yawPitchRollArray);
     if (Robot.oi.driveStraightButton.get()){
-      joystickX = 0;
+      //joystickX = 0;
+      if (!driveStraightFlag){
+        driveStraightAngle = yawPitchRollArray[0];
+        driveStraightFlag = true;
+      }
+      double vinniesError = driveStraightAngle - yawPitchRollArray[0];
+      joystickX = vinniesError * RobotMap.driveStraightProportion;
     }
+
+    else {
+      driveStraightFlag = false;
+    }
+
 
     System.out.println("X=" + joystickX + "Y=" + joystickY);
     Robot.drive.setArcade(joystickX, joystickY);
