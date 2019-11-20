@@ -63,6 +63,7 @@ public static boolean driveClosedLoopMode = true;
 
 public static int turboButtonNumber = 1; 
 public static int driveStraightButtonNumber = 2;
+public static int turn90ButtonNumber = 4;
 
 public static void getPreference(){
 prefs = Preferences.getInstance();

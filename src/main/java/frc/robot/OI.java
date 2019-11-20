@@ -8,6 +8,7 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.Turn90DegreesCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,6 +23,12 @@ public class OI {
   public Joystick driverStick = new Joystick(RobotMap.driverJoystickPort);
   public JoystickButton turboButton = new JoystickButton(driverStick, RobotMap.turboButtonNumber);
   public JoystickButton driveStraightButton = new JoystickButton(driverStick, RobotMap.driveStraightButtonNumber);
+  public JoystickButton turn90Button = new JoystickButton(driverStick, RobotMap.turn90ButtonNumber);
+
+  public OI(){
+    turn90Button.whenPressed(new Turn90DegreesCommand());
+  }
+  
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
