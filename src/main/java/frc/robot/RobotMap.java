@@ -41,13 +41,13 @@ public static int rightTalonSlave = 4;
 public static double joystickDeadBand = 0.05;
 
 //Must be experimentally derived
-public static double driveStraightProportion = 0.2;
+public static double driveStraightProportion = 0.02;
 
 public static double leftOverRightCompensation = .98;
 
 public static double talonDriveAccelerationRate = 0.3654;
 
-public static double nonTurboMultiplierTurn = 0.5;
+public static double nonTurboMultiplierTurn = 0.35;
 public static double nonTurboMultiplierForward = 0.5; 
 
 /*these are the pid gains responsiveness to the control loop
