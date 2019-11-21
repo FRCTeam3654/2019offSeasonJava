@@ -43,8 +43,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     RobotMap.getPreference();
-    oi = new OI();
+    // VERY IMPORTANT:   drive need be created before oi since oi creates Turn90DegreesCommand object in which need drive object
     drive = new Drive();
+    oi = new OI();  // need be after drive object
     
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

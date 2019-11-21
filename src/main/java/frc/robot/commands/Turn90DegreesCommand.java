@@ -53,6 +53,7 @@ public class Turn90DegreesCommand extends Command {
   @Override
   protected boolean isFinished() {
     if(Math.abs(vinniesError) < 1){
+      turn90Flag = false;//jun
       return true;
     }
     return false;
