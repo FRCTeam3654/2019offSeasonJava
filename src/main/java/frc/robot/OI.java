@@ -21,12 +21,16 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is.
   public Joystick driverStick = new Joystick(RobotMap.driverJoystickPort);
-  public JoystickButton turboButton = new JoystickButton(driverStick, RobotMap.turboButtonNumber);
-  public JoystickButton driveStraightButton = new JoystickButton(driverStick, RobotMap.driveStraightButtonNumber);
-  public JoystickButton turn90Button = new JoystickButton(driverStick, RobotMap.turn90ButtonNumber);
+  public JoystickButton turboButton;
+  public JoystickButton driveStraightButton;
+  public JoystickButton turn90Button;
+  
 
   public OI(){
-    turn90Button.whenPressed(new Turn90DegreesCommand());
+  turboButton = new JoystickButton(driverStick, RobotMap.turboButtonNumber);
+  driveStraightButton = new JoystickButton(driverStick, RobotMap.driveStraightButtonNumber);
+  turn90Button = new JoystickButton(driverStick, RobotMap.turn90ButtonNumber);
+  turn90Button.whenPressed(new Turn90DegreesCommand());
   }
   
   // There are a few additional built in buttons you can use. Additionally,
