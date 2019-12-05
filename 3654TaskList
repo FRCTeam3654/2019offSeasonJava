@@ -1,2 +1,71 @@
-TEst
-TEst
+Homework: research limelight
+FRC documentation
+http://docs.limelightvision.io/en/latest/ -> look here
+
+From most important to least important:
+    Drive mode
+        Arcade mode0
+    Percent Output
+        Deadband 
+        Need experimentally derived value
+        Acceleration limit
+            Turbo
+        Slope change??????
+    Closed-loop in code
+
+    Gyro display on the dashboard 
+
+    Drive straight
+
+    Spin a certain amount of degrees (TBD)
+        Reset after finished
+        Timeout 
+        Override with joystick
+
+    Lift elevator up
+        Limit switches
+        Controlled by a limit sensor
+        Top and bottom
+        Closed loop position mode
+
+    Emergency manual control
+        Problem sensor
+        Mode selection between closed loop and open loop mode 
+        On dashboard, not button 
+
+    Camera
+        Display on dashboard
+
+    Pneumatics 
+        Operated by air pressure
+        Can push out objects
+
+    Vision
+        Not a priority
+
+    Autonomous Mode
+
+Needed Variables:
+Experimentally derived output value (Percent output)
+Connection with joystick
+Direction (x,y)
+Talk to talons
+Feed into motors in wheels 
+One left one right
+
+
+
+Vocab:
+    Commit - saving while saying specifically what you did
+    Repo - on GitHub, merge the code so it knows which version of something you want to keep
+    Branches - want working code on the main branch, use other branches for specific changes
+    	Pull request - submitting individual branches to the captain for them to be merged accepted into the main/”blessed” branch
+
+
+Limelight:
+    Limelights transmit data to Network Tables at 100hz which is faster than the average at 10hz
+    Limelight uses values like tv,  tx, ty, and ta 
+        Tv - valid target 
+        Tx - horizontal offset, used to turn robot
+        Ty - vertical offset
+        Ta - target area, can find distance between object and robot
