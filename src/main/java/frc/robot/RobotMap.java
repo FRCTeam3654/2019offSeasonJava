@@ -42,7 +42,8 @@ public static double joystickDeadBand = 0.05;
 
 //Must be experimentally derived
 public static double driveStraightProportion = 0.02;
-public static double turnDegreeProportion = 0.005;
+public static double turnDegreeProportion = 0.007;
+public static double turn90DegreeTimeout = 1.5;
 
 public static double leftOverRightCompensation = .98;
 

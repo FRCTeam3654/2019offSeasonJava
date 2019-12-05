@@ -12,11 +12,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import java.math.*;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Turn90DegreesCommand extends Command {
   private boolean turn90Flag = false;
   private double turn90Angle = 0;
   private double vinniesError = 2;//greater than 1 so it doesn't get triggered until the error is correct
+  private double startTime90degree = 0;
+
   public Turn90DegreesCommand() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.drive);
@@ -39,6 +42,7 @@ public class Turn90DegreesCommand extends Command {
      
       if (!turn90Flag){
         turn90Angle = yawPitchRollArray[0] + 90;
+        startTime90degree = Timer.getFPGATimestamp();
         turn90Flag = true;
       }
       vinniesError = turn90Angle - yawPitchRollArray[0];
@@ -52,8 +56,12 @@ public class Turn90DegreesCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Math.abs(vinniesError) < 1){
-      turn90Flag = false;//jun
+    if(Math.abs(vinniesError) < 3){
+      turn90Flag = false;
+      return true;
+    }
+    if(startTime90degree + RobotMap.turn90DegreeTimeout < Timer.getFPGATimestamp()) {
+      turn90Flag = false;
       return true;
     }
     return false;
@@ -68,5 +76,6 @@ public class Turn90DegreesCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    turn90Flag = false;
   }
 }
