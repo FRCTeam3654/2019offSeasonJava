@@ -15,10 +15,11 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Turn90DegreesCommand extends Command {
-  private boolean turn90Flag = false;
-  private double turn90Angle = 0;
+  private boolean turn90Flag = false;//indicated the first time in loop. used to set initial conditions
+  private double turnEndpointAngle = 0;//vinnies desired finish endpoint angle 
   private double vinniesError = 2;//greater than 1 so it doesn't get triggered until the error is correct
   private double startTime90degree = 0;
+  private double desiredTurnAngle = 0; 
 
   public Turn90DegreesCommand() {
     // Use requires() here to declare subsystem dependencies
@@ -41,11 +42,23 @@ public class Turn90DegreesCommand extends Command {
     Robot.drive.pigeonVinnie.getYawPitchRoll(yawPitchRollArray);
      
       if (!turn90Flag){
-        turn90Angle = yawPitchRollArray[0] + 90;
+        if (Robot.oi.turnLeft180Button.get()){
+          desiredTurnAngle = 180;
+        }
+        if (Robot.oi.turnRight180Button.get()){
+          desiredTurnAngle = - 180;
+        }
+        if (Robot.oi.turnLeft90Button.get()){
+          desiredTurnAngle = 90;
+        }
+        if (Robot.oi.turnRight90Button.get()){
+          desiredTurnAngle = - 90;
+        }
+        turnEndpointAngle = yawPitchRollArray[0] + desiredTurnAngle;
         startTime90degree = Timer.getFPGATimestamp();
         turn90Flag = true;
       }
-      vinniesError = turn90Angle - yawPitchRollArray[0];
+      vinniesError = turnEndpointAngle - yawPitchRollArray[0];
        turn90X = vinniesError * RobotMap.turnDegreeProportion;
        turn90X = Math.min(1, turn90X);
        turn90X = Math.max(-1, turn90X);
@@ -61,6 +74,10 @@ public class Turn90DegreesCommand extends Command {
       return true;
     }
     if(startTime90degree + RobotMap.turn90DegreeTimeout < Timer.getFPGATimestamp()) {
+      turn90Flag = false;
+      return true;
+    }
+    if(Robot.oi.turboButton.get()){
       turn90Flag = false;
       return true;
     }
