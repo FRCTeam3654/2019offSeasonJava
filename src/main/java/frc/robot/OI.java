@@ -23,15 +23,24 @@ public class OI {
   public Joystick driverStick = new Joystick(RobotMap.driverJoystickPort);
   public JoystickButton turboButton;
   public JoystickButton driveStraightButton;
-  public JoystickButton turn90Button;
+  public JoystickButton turnLeft90Button;
+  public JoystickButton turnRight90Button; 
+  public JoystickButton turnLeft180Button;
+  public JoystickButton turnRight180Button;
+
   
 
   public OI(){
   turboButton = new JoystickButton(driverStick, RobotMap.turboButtonNumber);
   driveStraightButton = new JoystickButton(driverStick, RobotMap.driveStraightButtonNumber);
-  turn90Button = new JoystickButton(driverStick, RobotMap.turn90ButtonNumber);
-  turn90Button.whenPressed(new Turn90DegreesCommand());
-
+  turnLeft90Button = new JoystickButton(driverStick, RobotMap.turnLeft90ButtonNumber);
+  turnRight90Button = new JoystickButton(driverStick, RobotMap.turnRight90ButtonNumber);
+  turnLeft180Button = new JoystickButton(driverStick, RobotMap.turnLeft180ButtonNumber);
+  turnRight180Button = new JoystickButton(driverStick, RobotMap.turnRight180ButtonNumber);
+  turnLeft90Button.whenPressed(new Turn90DegreesCommand());
+  turnRight90Button.whenPressed(new Turn90DegreesCommand());
+  turnLeft180Button.whenPressed(new Turn90DegreesCommand());
+  turnRight180Button.whenPressed(new Turn90DegreesCommand());
   }
   
   // There are a few additional built in buttons you can use. Additionally,
