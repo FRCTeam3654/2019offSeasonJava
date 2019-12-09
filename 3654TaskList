@@ -17,10 +17,10 @@ From most important to least important:
 
     Drive straight
 
-    Spin a certain amount of degrees (TBD)
-        Reset after finished
-        Timeout 
-        Override with joystick
+    Spin a certain amount of degrees (90 and 180) X
+        Reset after finished X
+        Timeout X
+        Override with joystick X
 
     Lift elevator up
         Limit switches
