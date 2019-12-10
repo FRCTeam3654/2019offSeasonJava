@@ -70,6 +70,8 @@ public static int turnRight90ButtonNumber = 4;
 public static int turnLeft180ButtonNumber = 5;
 public static int turnRight180ButtonNumber = 6;
 
+public static int lightsPneumaticsButtonNumber = 11;
+
 public static void getPreference(){
 prefs = Preferences.getInstance();
 driveClosedLoopMode = prefs.getBoolean("DriveClosedLoopMode", true);
