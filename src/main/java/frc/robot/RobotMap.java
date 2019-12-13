@@ -70,6 +70,8 @@ public static int turnLeft90ButtonNumber = 3;
 public static int turnRight90ButtonNumber = 4;
 public static int turnLeft180ButtonNumber = 5;
 public static int turnRight180ButtonNumber = 6;
+public static int elevatorDownButtonNumber = 7;
+public static int elevatorUpButtonNumber = 8;
 
 public static int lightsPneumaticsButtonNumber = 11;
 

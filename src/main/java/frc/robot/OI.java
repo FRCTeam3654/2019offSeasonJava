@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.Turn90DegreesCommand;
 import frc.robot.commands.pneumaticLightCommand;
+import frc.robot.commands.ElevatorCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -29,6 +30,8 @@ public class OI {
   public JoystickButton turnLeft180Button;
   public JoystickButton turnRight180Button;
   public JoystickButton lightsButton;
+  public JoystickButton elevatorDownButton;
+  public JoystickButton elevatorUpButton;
 
   public OI(){
   turboButton = new JoystickButton(driverStick, RobotMap.turboButtonNumber);
@@ -43,6 +46,8 @@ public class OI {
   turnLeft180Button.whenPressed(new Turn90DegreesCommand());
   turnRight180Button.whenPressed(new Turn90DegreesCommand());
   lightsButton.whileHeld(new pneumaticLightCommand());
+  elevatorDownButton.whileHeld(new ElevatorCommand());
+  elevatorUpButton.whileHeld(new ElevatorCommand());
   }
   
   // There are a few additional built in buttons you can use. Additionally,
