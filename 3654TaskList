@@ -69,3 +69,13 @@ Limelight:
         Tx - horizontal offset, used to turn robot
         Ty - vertical offset
         Ta - target area, can find distance between object and robot
+
+Testing a new robot
+    Check the firmware on the roborio/talons
+    Check the radio address
+    Check that talons are addressed properly
+    Check that each motor operates
+    Check encoders (working and wheels go in the right direction)
+    Check rpm on left and right
+    Check pigeon
+    Change the static variables
