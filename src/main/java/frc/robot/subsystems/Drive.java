@@ -109,7 +109,7 @@ public class Drive extends Subsystem {
 		void zeroSensors() {
 			leftFrontTalon.getSensorCollection().setQuadraturePosition(0, RobotMap.pidLoopTimeout);
 			rightFrontTalon.getSensorCollection().setQuadraturePosition(0, RobotMap.pidLoopTimeout);
-			System.out.println("[Quadrature Encoders] All sensors are zeroed.\n");
+			System.out.println("[Quadrature Encoders] All drive sensors are zeroed.\n");
 		}
 		
 public void setArcade(double velocity, double turn){

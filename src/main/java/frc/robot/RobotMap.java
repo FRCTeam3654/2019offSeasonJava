@@ -37,6 +37,7 @@ public static int leftTalonMaster = 1;
 public static int rightTalonMaster = 2;
 public static int leftTalonSlave = 3;
 public static int rightTalonSlave = 4;
+public static int elevatorTalonID = 6;
 
 public static double joystickDeadBand = 0.05;
 
