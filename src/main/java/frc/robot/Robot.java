@@ -17,6 +17,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.TechtigersPneumatics;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Elevator;
 
 
 
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
   public static TechtigersPneumatics techtigersPneumatics; 
   public static OI oi;
   public static Drive drive;
+  public static Elevator elevator;
 
   
 
@@ -48,7 +50,9 @@ public class Robot extends TimedRobot {
     RobotMap.getPreference();
     // VERY IMPORTANT:   drive need be created before oi since oi creates Turn90DegreesCommand object in which need drive object
     drive = new Drive();
+    elevator = new Elevator();
     oi = new OI();  // need be after drive object
+
     
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

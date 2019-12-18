@@ -11,9 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 
 
 public class ElevatorCommand extends Command {
+  private boolean elevatorFlag = false;
   public ElevatorCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -27,6 +30,15 @@ public class ElevatorCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+//On robot, the wheel turning backwards makes the elevator go up and the wheel turning forwards makes it go down
+    if (!elevatorFlag){
+      if (Robot.oi.elevatorDownButton.get()){
+        Robot.elevator.elevatorTalon.set(ControlMode.PercentOutput, RobotMap.elevatorDownSpeed);
+      }
+      if (Robot.oi.elevatorUpButton.get()){ 
+        Robot.elevator.elevatorTalon.set(ControlMode.PercentOutput, RobotMap.elevatorUpSpeed);
+      }
+    }
 
   }
 

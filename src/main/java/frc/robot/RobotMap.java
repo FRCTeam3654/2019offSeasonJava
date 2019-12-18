@@ -73,6 +73,9 @@ public static int turnRight180ButtonNumber = 6;
 public static int elevatorDownButtonNumber = 7;
 public static int elevatorUpButtonNumber = 8;
 
+public static double elevatorDownSpeed = -0.25;
+public static double elevatorUpSpeed = 0.25;
+
 public static int lightsPneumaticsButtonNumber = 11;
 
 public static void getPreference(){
