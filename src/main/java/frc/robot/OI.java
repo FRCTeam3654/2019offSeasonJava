@@ -41,6 +41,8 @@ public class OI {
   turnLeft180Button = new JoystickButton(driverStick, RobotMap.turnLeft180ButtonNumber);
   turnRight180Button = new JoystickButton(driverStick, RobotMap.turnRight180ButtonNumber);
   lightsButton = new JoystickButton(driverStick, RobotMap.lightsPneumaticsButtonNumber);
+  elevatorDownButton = new JoystickButton(driverStick, RobotMap.elevatorDownButtonNumber);
+  elevatorUpButton = new JoystickButton(driverStick, RobotMap.elevatorUpButtonNumber);
   turnLeft90Button.whenPressed(new Turn90DegreesCommand());
   turnRight90Button.whenPressed(new Turn90DegreesCommand());
   turnLeft180Button.whenPressed(new Turn90DegreesCommand());
