@@ -17,6 +17,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 
 public class ElevatorCommand extends Command {
+  private boolean elevatorFlag = false;
   
   public ElevatorCommand() {
     // Use requires() here to declare subsystem dependencies
@@ -34,12 +35,17 @@ public class ElevatorCommand extends Command {
 //On robot, the wheel turning backwards makes the elevator go up and the wheel turning forwards makes it go down
    
 //need to make elevatorPower object
+      if (!elevatorFlag){ 
+        if (Robot.oi.elevatorDownButton.get() && Robot.oi.elevatorUpButton.get()){
+          
+      }
       if (Robot.oi.elevatorDownButton.get()){
         Robot.elevator.setPower(RobotMap.elevatorDownSpeed);
       }
       if (Robot.oi.elevatorUpButton.get()){ 
         Robot.elevator.setPower(RobotMap.elevatorUpSpeed);
       }
+    }
     }
 
   
@@ -48,11 +54,17 @@ public class ElevatorCommand extends Command {
   @Override
   protected boolean isFinished() {
     if (!Robot.oi.elevatorDownButton.get() && !Robot.oi.elevatorUpButton.get()){
+      elevatorFlag = true;
       return true;
     }
-    if (Robot.oi.elevatorDownButton.get() && Robot.oi.elevatorUpButton.get()){
+
+    else if (Robot.oi.elevatorDownButton.get() && Robot.oi.elevatorUpButton.get()){
+      elevatorFlag = true;
       return true;
     }
+    else{
+    elevatorFlag = false;}
+
     return false;
     }
   
