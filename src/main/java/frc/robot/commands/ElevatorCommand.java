@@ -32,12 +32,13 @@ public class ElevatorCommand extends Command {
   @Override
   protected void execute() {
 //On robot, the wheel turning backwards makes the elevator go up and the wheel turning forwards makes it go down
-    
+   
+//need to make elevatorPower object
       if (Robot.oi.elevatorDownButton.get()){
-        Robot.elevator.elevatorTalon.set(ControlMode.PercentOutput, RobotMap.elevatorDownSpeed);
+        Robot.elevator.setPower(RobotMap.elevatorDownSpeed);
       }
       if (Robot.oi.elevatorUpButton.get()){ 
-        Robot.elevator.elevatorTalon.set(ControlMode.PercentOutput, RobotMap.elevatorUpSpeed);
+        Robot.elevator.setPower(RobotMap.elevatorUpSpeed);
       }
     }
 

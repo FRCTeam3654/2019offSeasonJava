@@ -29,6 +29,10 @@ public class Elevator extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
+  public void setPower(double elevatorPower){
+    elevatorTalon.set(ControlMode.PercentOutput, elevatorPower);
+     }
+
   public Elevator (){
     elevatorTalon.configFactoryDefault();
 
