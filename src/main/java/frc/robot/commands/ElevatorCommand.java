@@ -46,8 +46,15 @@ public class ElevatorCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if (!Robot.oi.elevatorDownButton.get() && !Robot.oi.elevatorUpButton.get()){
+      return true;
+    }
+    if (Robot.oi.elevatorDownButton.get() && Robot.oi.elevatorUpButton.get()){
+      return true;
+    }
     return false;
-  }
+    }
+  
 
   // Called once after isFinished returns true
   @Override
