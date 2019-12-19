@@ -20,7 +20,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
  * Add your docs here.
  */
 public class Elevator extends Subsystem {
-  public TalonSRX elevatorTalon = new TalonSRX(RobotMap.elevatorTalonID);
+  private TalonSRX elevatorTalon = new TalonSRX(RobotMap.elevatorTalonID);
   
 
   @Override

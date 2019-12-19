@@ -47,9 +47,9 @@ public class OI {
   turnRight90Button.whenPressed(new Turn90DegreesCommand());
   turnLeft180Button.whenPressed(new Turn90DegreesCommand());
   turnRight180Button.whenPressed(new Turn90DegreesCommand());
-  lightsButton.whileHeld(new pneumaticLightCommand());
-  elevatorDownButton.whileHeld(new ElevatorCommand());
-  elevatorUpButton.whileHeld(new ElevatorCommand());
+  lightsButton.whenPressed(new pneumaticLightCommand());
+  elevatorDownButton.whenPressed(new ElevatorCommand());
+  elevatorUpButton.whenPressed(new ElevatorCommand());
   }
   
   // There are a few additional built in buttons you can use. Additionally,

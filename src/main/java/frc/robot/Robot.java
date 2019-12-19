@@ -51,6 +51,7 @@ public class Robot extends TimedRobot {
     // VERY IMPORTANT:   drive need be created before oi since oi creates Turn90DegreesCommand object in which need drive object
     drive = new Drive();
     elevator = new Elevator();
+    techtigersPneumatics = new TechtigersPneumatics();
     oi = new OI();  // need be after drive object
 
     
